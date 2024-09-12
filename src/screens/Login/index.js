@@ -9,13 +9,20 @@ import {
   useTheme,
 } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useNavigation } from '@react-navigation/native';
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("cliente"); // 'cliente' para Cliente, 'funcionario' para Funcionário
+  const navigation = useNavigation();
 
   const theme = useTheme();
+
+  const handleLogin = () => {
+    // Realize a lógica de autenticação aqui
+    navigation.navigate('MainTabs');
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -59,16 +66,16 @@ export default function Login() {
 
       <Button
         mode="contained"
-        onPress={() => console.log("Entrar")}
+        onPress={() => navigation.navigate('HomeTabs')}
         style={styles.loginButton}
         labelStyle={styles.loginButtonText}
         buttonColor="#ED1D25"
       >
         Entrar
       </Button>
-      <Button
+      <Button 
         mode="text" // Troca para "text" para não ter contorno ou fundo
-        onPress={() => console.log("Cadastro")}
+        onPress={() => navigation.navigate('SignUp')}
         style={styles.signUpButton}
         labelStyle={styles.signUpButtonText} // Redefine o estilo do texto
       >
