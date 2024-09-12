@@ -58,10 +58,10 @@ export default function Profile() {
           <Text style={styles.modalTitle}>Editar Perfil</Text>
           
           {/* Inputs de Edição (baseado na tela de cadastro) */}
-          <TextInput label="Nome completo" style={styles.input} />
-          <TextInput label="E-mail" style={styles.input} keyboardType="email-address" />
-          <TextInput label="Número de telefone" style={styles.input} keyboardType="phone-pad" />
-          <TextInput label="Data de nascimento" style={styles.input} />
+          <TextInput label="Nome completo" style={styles.input} activeUnderlineColor="#ED1D25"/>
+          <TextInput label="E-mail" style={styles.input} keyboardType="email-address" activeUnderlineColor="#ED1D25"/>
+          <TextInput label="Número de telefone" style={styles.input} keyboardType="phone-pad" activeUnderlineColor="#ED1D25"/>
+          <TextInput label="Data de nascimento" style={styles.input} activeUnderlineColor="#ED1D25"/>
 
           {/* Botão de Salvar e Fechar */}
           <Button mode="contained" onPress={handleCloseModal} style={styles.saveButton} buttonColor="#ED1D25">
@@ -135,5 +135,9 @@ const styles = StyleSheet.create({
   saveButton: {
     height: 50,
     justifyContent: 'center',
+    borderRadius: 5,
+    backgroundColor: '#ED1D25',
+    marginBottom: 20,
+    color: 'white', // Texto branco no botão de salvar
   },
 });
