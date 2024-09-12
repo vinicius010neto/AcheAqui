@@ -50,6 +50,7 @@ export default function Login() {
         keyboardType="email-address"
         autoCapitalize="none"
         underlineColor="transparent" // Remover a linha de baixo
+        activeUnderlineColor="#ED1D25"
         theme={{ colors: { background: "#D3D3D3" } }} // Fundo cinza
       />
 
@@ -61,6 +62,7 @@ export default function Login() {
         mode="flat" // Removendo contorno
         style={styles.input}
         underlineColor="transparent" // Remover a linha de baixo
+        activeUnderlineColor="#ED1D25"
         theme={{ colors: { background: "#D3D3D3" } }} // Fundo cinza
       />
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet, StatusBar, Image } from "react-native";
+import { View, StyleSheet, StatusBar } from "react-native";
 import {
   TextInput,
   Button,
@@ -32,7 +32,7 @@ export default function SignUp() {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor="#FFF" />
-
+    
       <Text style={styles.label}>Nome completo</Text>
       <TextInput
         value={fullName}
@@ -40,7 +40,8 @@ export default function SignUp() {
         mode="flat"
         style={styles.input}
         underlineColor="transparent"
-        theme={{ colors: { background: "#D3D3D3" } }} // Fundo cinza claro
+        activeUnderlineColor="#ED1D25"
+        theme={{ colors: { background: "#D3D3D3" } }}
       />
 
       <Text style={styles.label}>E-mail</Text>
@@ -52,6 +53,7 @@ export default function SignUp() {
         keyboardType="email-address"
         autoCapitalize="none"
         underlineColor="transparent"
+        activeUnderlineColor="#ED1D25"
         theme={{ colors: { background: "#D3D3D3" } }}
       />
 
@@ -63,6 +65,7 @@ export default function SignUp() {
         mode="flat"
         style={styles.input}
         underlineColor="transparent"
+        activeUnderlineColor="#ED1D25"
         theme={{ colors: { background: "#D3D3D3" } }}
       />
 
@@ -74,6 +77,7 @@ export default function SignUp() {
         mode="flat"
         style={styles.input}
         underlineColor="transparent"
+        activeUnderlineColor="#ED1D25"
         theme={{ colors: { background: "#D3D3D3" } }}
       />
 
@@ -85,6 +89,7 @@ export default function SignUp() {
         style={styles.input}
         keyboardType="phone-pad"
         underlineColor="transparent"
+        activeUnderlineColor="#ED1D25"
         theme={{ colors: { background: "#D3D3D3" } }}
       />
 
@@ -95,6 +100,7 @@ export default function SignUp() {
         mode="flat"
         style={styles.input}
         underlineColor="transparent"
+        activeUnderlineColor="#ED1D25"
         theme={{ colors: { background: "#D3D3D3" } }}
       />
 
@@ -102,7 +108,8 @@ export default function SignUp() {
         <Checkbox
           status={acceptTerms ? "checked" : "unchecked"}
           onPress={() => setAcceptTerms(!acceptTerms)}
-          color={theme.colors.primary}
+          color="#ED1D25" // Cor ao marcar o checkbox
+          uncheckedColor="#D3D3D3" // Cor quando não está marcado
         />
         <Text style={styles.checkboxLabel}>Aceito os termos e condições</Text>
       </View>
@@ -111,7 +118,8 @@ export default function SignUp() {
         <Checkbox
           status={receivePromotions ? "checked" : "unchecked"}
           onPress={() => setReceivePromotions(!receivePromotions)}
-          color={theme.colors.primary}
+          color="#ED1D25" // Cor ao marcar o checkbox
+          uncheckedColor="#D3D3D3" // Cor quando não está marcado
         />
         <Text style={styles.checkboxLabel}>
           Desejo receber promoções e novidades
