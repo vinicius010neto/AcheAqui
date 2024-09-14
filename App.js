@@ -36,7 +36,7 @@ function HomeTabs() {
             return <FontAwesome name={iconName} size={size} color={color} />;
           }
         },
-        tabBarShowLabel: false, // Remove os nomes
+         // Remove os nomes
         tabBarActiveTintColor: '#ED1D25',
         tabBarInactiveTintColor: 'gray',
       })}
