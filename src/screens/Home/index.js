@@ -3,7 +3,7 @@ import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'rea
 import { Avatar } from 'react-native-paper'; 
 import { useNavigation } from '@react-navigation/native';
 
-// Produtos mock para o carrossel
+// Produtos mock para o feed
 const products = [
   { id: 1, name: 'Fone de Ouvido', oldPrice: 'R$ 199,99', newPrice: 'R$ 149,99', discount: '25%', image: require('../../assets/fone.webp') },
   { id: 2, name: 'Smartphone', oldPrice: 'R$ 1.499,99', newPrice: 'R$ 1.199,99', discount: '20%', image: require('../../assets/smartphone.webp') },
@@ -42,18 +42,21 @@ export default function Home() {
       {/* Promoções recomendadas */}
       <Text style={styles.recommendedText}>Promoções recomendadas</Text>
 
-      {/* Carrossel de produtos em promoção */}
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.carousel}>
-        {products.map((product) => (
-          <View key={product.id} style={styles.productCard}>
-            <Image source={product.image} style={styles.productImage} />
+      {/* Feed de produtos em promoção */}
+      {products.map((product) => (
+        <View key={product.id} style={styles.productCard}>
+          <Image source={product.image} style={styles.productImage} />
+          <View style={styles.productInfo}>
             <Text style={styles.productName}>{product.name}</Text>
             <Text style={styles.oldPrice}>{product.oldPrice}</Text>
             <Text style={styles.newPrice}>{product.newPrice}</Text>
             <Text style={styles.discount}>{product.discount} de desconto</Text>
+            <TouchableOpacity style={styles.cartButton} onPress={() => alert('Produto adicionado ao carrinho!')}>
+              <Text style={styles.cartButtonText}>Adicionar ao carrinho</Text>
+            </TouchableOpacity>
           </View>
-        ))}
-      </ScrollView>
+        </View>
+      ))}
     </ScrollView>
   );
 }
@@ -61,15 +64,16 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5', // Fundo mais escuro
+    backgroundColor: '#f5f5f5',
     paddingHorizontal: 20,
   },
   profileContainer: {
-    backgroundColor: '#fff', // Container branco puro
+    backgroundColor: '#fff',
     padding: 10,
     borderRadius: 10,
     marginBottom: 20,
     marginTop: 40,
+
   },
   profileSection: {
     flexDirection: 'row',
@@ -101,6 +105,11 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     position: 'relative',
     marginTop: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.3,
+    shadowRadius: 1,
+    elevation: 2,
   },
   sectionImage: {
     width: '100%',
@@ -123,41 +132,62 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 10,
   },
-  carousel: {
-    marginBottom: 30,
-  },
   productCard: {
-    width: 160,
-    marginRight: 15,
     backgroundColor: '#fff',
     borderRadius: 10,
+    marginBottom: 15,
     padding: 10,
     alignItems: 'center',
+    width: '100%',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.3,
+    shadowRadius: 1,
+    elevation: 2,
   },
   productImage: {
-    width: 140,
-    height: 140,
+    width: '100%',  // A largura ocupa o espaço total
+    height: 150,
     borderRadius: 8,
+    resizeMode: 'contain',  // Garante que a imagem não seja cortada
   },
-  productName: {
-    fontSize: 14,
-    fontWeight: 'bold',
+  productInfo: {
+    alignItems: 'center',
     marginTop: 10,
   },
+  productName: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 5,
+  },
   oldPrice: {
-    fontSize: 12,
+    fontSize: 14,
     color: '#999',
     textDecorationLine: 'line-through',
     marginTop: 5,
   },
   newPrice: {
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: 'bold',
     color: '#d32f2f',
+    marginBottom: 5,
   },
   discount: {
-    fontSize: 12,
+    fontSize: 14,
     color: '#4caf50',
-    marginTop: 5,
+    marginBottom: 10,
+  },
+  cartButton: {
+    backgroundColor: '#d32f2f',
+    paddingVertical: 10,
+    paddingHorizontal: 40,
+    borderRadius: 5,
+    marginTop: 10,
+    marginBottom: 10,
+  },
+  cartButtonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 16,
   },
 });
