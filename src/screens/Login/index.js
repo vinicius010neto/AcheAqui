@@ -20,8 +20,11 @@ export default function Login() {
   const theme = useTheme();
 
   const handleLogin = () => {
-    // Realize a lógica de autenticação aqui
-    navigation.navigate('MainTabs');
+    if (role === 'funcionario') {
+      navigation.navigate('EmployeeTabs'); // Se for funcionário, vai para o container com as três telas
+    } else {
+      navigation.navigate('HomeTabs'); // Se for cliente, vai para o container padrão
+    }
   };
 
   return (
@@ -68,7 +71,7 @@ export default function Login() {
 
       <Button
         mode="contained"
-        onPress={() => navigation.navigate('HomeTabs')}
+        onPress={handleLogin}
         style={styles.loginButton}
         labelStyle={styles.loginButtonText}
         buttonColor="#ED1D25"

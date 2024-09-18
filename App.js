@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons, FontAwesome } from '@expo/vector-icons';
-
+import EmployeeTabs from './src/screens/navigation/EmployeeTabs'; 
 import Login from './src/screens/Login';
 import Home from './src/screens/Home';
 import Search from './src/screens/Search';
@@ -60,12 +60,17 @@ export default function App() {
         />
         <Stack.Screen
           name="SignUp"
-          component={SignUp}  // Tela de cadastro
+          component={SignUp}
           options={{ headerShown: true, title: 'Cadastro' }}
         />
         <Stack.Screen
           name="HomeTabs"
           component={HomeTabs}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="EmployeeTabs"
+          component={EmployeeTabs} // Novo container para funcionários
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
